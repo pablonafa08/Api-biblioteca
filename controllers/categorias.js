@@ -14,10 +14,11 @@ function addCategoria(req, res) {
 
     //validacion de parametros requeridos
     categoria.descripcion = params.descripcion;
+    categoria.dias_prestamos = params.dias_prestamos;
     categoria.estatus = params.estatus;
 
     //buscar que ya existe la categoria
-    Categoria.findOne({ descripcion: categoria.descripcion.toLowerCase() }, (err, issetCategoria) => {
+    Categoria.findOne({ descripcion: categoria.descripcion }, (err, issetCategoria) => {
         if (err) {
             res.status(500).send({ message: `Error al comprobar existencia` });
         } else {

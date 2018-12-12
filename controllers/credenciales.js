@@ -26,6 +26,7 @@ function addCredencial(req, res) {
     credencial.descuento = params.descuento;
     credencial.total = params.total;
     credencial.estatus = params.estatus;
+    credencial.bibliotecario = params.bibliotecario;
 
     //guardar en la BD
     credencial.save((err, credencialStored) => {
@@ -59,6 +60,7 @@ function updateCredencial(req, res) {
 }
 
 function getCredencialesDay(req, res) {
+    var bibliotecarioId = req.params.id;
     var fecha = new Date();
     var dd = fecha.getDate();
     var mm = fecha.getMonth() + 1;
@@ -66,7 +68,7 @@ function getCredencialesDay(req, res) {
     var fecha_h = yyyy + '-' + mm + '-' + dd;
     var fecha_today = moment().format('YYYY-MM-DD');
     // moment('2010-10-20').isSameOrBefore('2010-10-21');
-    Credencial.find({ fecha_hoy: fecha_today }).exec((err, allCredenciales) => {
+    Credencial.find({ fecha_hoy: fecha_today, bibliotecario: bibliotecarioId }).exec((err, allCredenciales) => {
         if (err) {
             res.status(500).send({ message: `Error en la peticion` });
         } else {

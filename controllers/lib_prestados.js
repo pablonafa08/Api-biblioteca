@@ -87,8 +87,9 @@ function getLibPrestadosTodos(req, res) {
 }
 
 function getLibDevueltosDay(req, res) {
+    var bibliotecarioId = req.params.id;
     var fecha_today = moment().format('YYYY-MM-DD');
-    LibPrestado.find({ estatus: 'B', fecha_entrega_R: fecha_today }).populate({ path: 'libro' }).populate({ path: 'usuario' }).populate({ path: 'bibliotecario' }).exec((err, allPrestamos) => {
+    LibPrestado.find({ estatus: 'B', fecha_entrega_R: fecha_today, bibliotecario_dev: bibliotecarioId }).populate({ path: 'libro' }).populate({ path: 'usuario' }).populate({ path: 'bibliotecario' }).exec((err, allPrestamos) => {
         if (err) {
             res.status(500).send({ message: `Error en la peticion` });
         } else {

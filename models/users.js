@@ -18,7 +18,7 @@ var usuariosSchema = schema({
     estatus: String,
     imagen: String, //checar tipo de dato
     estudiante: String, //checar tipo de dato (false, true)
-    escuela: String,
+    escuela: { type: schema.ObjectId, ref: 'Escuela' },
     grado: String
 });
 

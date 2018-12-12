@@ -71,7 +71,7 @@ function updateUsuario(req, res) {
 }
 
 function getUsuarios(req, res) {
-    Usuario.find({ estatus: 'A' }).exec((err, allUsuarios) => {
+    Usuario.find({ estatus: 'A' }).populate({ path: 'escuela' }).exec((err, allUsuarios) => {
         if (err) {
             res.status(500).send({ message: `Error en la peticion` });
         } else {
@@ -87,7 +87,7 @@ function getUsuarios(req, res) {
 function getUsuario(req, res) {
     var UsuarioId = req.params.id;
 
-    Usuario.findById(UsuarioId).exec((err, usuario) => {
+    Usuario.findById(UsuarioId).populate({ path: 'escuela' }).exec((err, usuario) => {
         if (err) {
             res.status(500).send({ message: `Error en la peticion` });
         } else {

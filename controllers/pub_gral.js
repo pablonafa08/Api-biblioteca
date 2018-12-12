@@ -16,6 +16,7 @@ function addPublico(req, res) {
     publico.edad = params.edad;
     publico.sexo = params.sexo;
     publico.estudiante = params.estudiante;
+    publico.escuela = params.escuela;
     publico.entrada = params.entrada;
     publico.salida = params.salida;
     publico.fecha = params.fecha;
@@ -51,7 +52,7 @@ function updatePublico(req, res) {
 }
 
 function getVisitas(req, res) {
-    Pub_gral.find({}).exec((err, allVisitas) => {
+    Pub_gral.find({}).populate({ path: 'escuela' }).exec((err, allVisitas) => {
         if (err) {
             res.status(500).send({ message: `Error en la peticion` });
         } else {

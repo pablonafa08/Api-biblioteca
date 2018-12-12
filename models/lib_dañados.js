@@ -9,7 +9,8 @@ var librosDanSchema = schema({
     fecha: Date,
     porcentaje: Number,
     cobro_dan: Number,
-    comentarios: String
+    comentarios: String,
+    bibliotecario: { type: schema.ObjectId, ref: 'Bibliotecario' }
 });
 
 module.exports = mongoose.model('LibDaniado', librosDanSchema);

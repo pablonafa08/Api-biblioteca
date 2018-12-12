@@ -10,7 +10,7 @@ router.get('/all', libroPreCtrl.getLibPrestados);
 router.get('/getone/:id', libroPreCtrl.getPrestamo);
 router.get('/fecha/:fecha', libroPreCtrl.comprobarFecha);
 router.get('/dias/:fecha', libroPreCtrl.contarDiasRetraso);
-router.get('/allday', libroPreCtrl.getLibDevueltosDay);
+router.get('/allday/:id', libroPreCtrl.getLibDevueltosDay);
 router.get('/alldev', libroPreCtrl.getLibPrestadosyDev);
 router.get('/allbyuser/:id', libroPreCtrl.getLibPrestadosyDevByUsuario);
 router.get('/alltodos', libroPreCtrl.getLibPrestadosTodos);

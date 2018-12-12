@@ -20,6 +20,8 @@ const publicoRoutes = require('./routes/pub_gral');
 const puestoRoutes = require('./routes/puestos');
 const usuarioRoutes = require('./routes/users');
 const precioRoutes = require('./routes/preciocredencial');
+const escuelaRoutes = require('./routes/escuelas');
+const comentarioRoutes = require('./routes/comentarios_lib')
 
 //middleware de librerias
 app.use(filesUpload());
@@ -55,5 +57,7 @@ app.use('/publico', publicoRoutes);
 app.use('/puestos', puestoRoutes);
 app.use('/usuarios', usuarioRoutes);
 app.use('/preciocredencial', precioRoutes);
+app.use('/escuelas', escuelaRoutes);
+app.use('/comentarios', comentarioRoutes);
 
 module.exports = app;

@@ -14,8 +14,8 @@ var librosSchema = schema({
     categoria: { type: schema.ObjectId, ref: 'Categoria' }, //categoria
     imagen: String,
     precio: Number, //cambiar tipo
-    estatus: String,
-    dias_prestamos: Number
+    estatus: String
+
 });
 
 module.exports = mongoose.model('Libro', librosSchema);

@@ -18,6 +18,7 @@ function addLibDaniado(req, res) {
     danio.cobro_dan = params.cobro_dan;
     danio.comentarios = params.comentarios;
     danio.fecha = hoy;
+    danio.bibliotecario = params.bibliotecario;
 
     danio.save((err, danioLibStored) => {
         if (err) {
@@ -33,8 +34,9 @@ function addLibDaniado(req, res) {
 }
 
 function getLibDaniadosDay(req, res) {
+    var bibliotecarioId = req.params.id;
     var fecha_today = moment().format('YYYY-MM-DD');
-    LibDaniado.find({ fecha: fecha_today }).exec((err, allLibDaniados) => {
+    LibDaniado.find({ fecha: fecha_today, bibliotecario: bibliotecarioId }).exec((err, allLibDaniados) => {
         if (err) {
             res.status(500).send({ message: `Error en la peticion` });
         } else {

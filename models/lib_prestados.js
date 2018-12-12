@@ -17,7 +17,8 @@ var libPrestadosSchema = schema({ //checar si se agrega el precio del libro Y ch
     entrega_danio: String, //↑
     dias_retraso: Number,
     porcentaje: Number,
-    cobro_retraso: Number
+    cobro_retraso: Number,
+    bibliotecario_dev: { type: schema.ObjectId, ref: 'Bibliotecario' }
 });
 
 module.exports = mongoose.model('LibPrestado', libPrestadosSchema);

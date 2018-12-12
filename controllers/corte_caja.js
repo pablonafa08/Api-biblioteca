@@ -34,7 +34,23 @@ function addCorte(req, res) {
 }
 
 function allCortes(req, res) {
-    Corte.find({}).exec((err, allCortes) => {
+    Corte.find({}).populate({ path: 'bibliotecario' }).exec((err, allCortes) => {
+        if (err) {
+            res.status(500).send({ message: `Error en la peticion` });
+        } else {
+            if (!allCortes) {
+                res.status(200).send({ message: `No hay cortes` });
+            } else {
+                res.status(200).send({ cortes: allCortes });
+            }
+        }
+    });
+}
+
+function comprobarCorte(req, res) {
+    var bibliotecarioId = req.params.id;
+    var hoy = moment().format('YYYY-MM-DD');
+    Corte.find({ bibliotecario: bibliotecarioId, fecha: hoy }).exec((err, allCortes) => {
         if (err) {
             res.status(500).send({ message: `Error en la peticion` });
         } else {
@@ -49,5 +65,6 @@ function allCortes(req, res) {
 
 module.exports = {
     addCorte,
-    allCortes
+    allCortes,
+    comprobarCorte
 }

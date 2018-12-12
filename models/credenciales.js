@@ -11,7 +11,8 @@ var credencialSchema = schema({
     costo: Number, //checar tipo de dato
     descuento: Number, //checar tipo de dato
     total: Number, //checar tipo de dato
-    estatus: String
+    estatus: String,
+    bibliotecario: { type: schema.ObjectId, ref: 'Bibliotecario' }
 });
 
 module.exports = mongoose.model('Credencial', credencialSchema);

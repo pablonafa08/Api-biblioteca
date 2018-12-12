@@ -37,9 +37,9 @@ function addLibro(req, res) {
     //imagen
     libro.precio = params.precio;
     libro.estatus = params.estatus;
-    libro.dias_prestamos = params.dias_prestamos;
+    // libro.dias_prestamos = params.dias_prestamos;
 
-    Libro.findOne({ descripcion: libro.descripcion.toLowerCase() }, (err, issetLibro) => {
+    Libro.findOne({ descripcion: libro.descripcion }, (err, issetLibro) => {
         if (err) {
             res.status(500).send({ message: `Error al hacer la comprobacion` });
         } else {

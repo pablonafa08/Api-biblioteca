@@ -14,6 +14,14 @@ mongoose.connect('mongodb://uk3vi8dw75td3eg:L7sAcO3agHy3bgYFSIuc@bf6cd8ielnidzgq
     }
 });
 
+// mongoose.connect('mongodb://localhost:27017/zoo', { useNewUrlParser: true }, (err) => {
+//     if (!err) {
+//         app.listen(3000, () => {
+//             console.log('El servidor corre en el http://localhost:3000');
+//         });
+//     }
+// });
+
 
 
 
